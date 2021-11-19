@@ -6,6 +6,7 @@
 <div class="box shadow">
     <form action="{{url('/login')}}" method="post">
 
+        @csrf
         <!-- NAME FIELD -->
         <label for="email" class="label-login">Correo electrónico:</label>
         <div class="input-group">
@@ -22,7 +23,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-lock"></i></div>
             </div>
-            <input type="text" name="password" class="form-control">
+            <input type="password" name="password" class="form-control">
         </div>
 
         <!-- SUBMIT BUTTON -->

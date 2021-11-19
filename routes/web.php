@@ -18,6 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Connection
-Route::get('/login', [ConnectController::class, 'getLogin'])->name('login');
-Route::get('/register', [ConnectController::class, 'getRegister'])->name('register');
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [ConnectController::class, 'getLogin'])->name('login');
+    Route::post('/login', [ConnectController::class, 'postLogin'])->name('login');
+    Route::get('/register', [ConnectController::class, 'getRegister'])->name('register');
+    Route::post('/register', [ConnectController::class, 'postRegister'])->name('register');
+});
+
+Route::get('/logout', [ConnectController::class, 'getLogout'])->name('logout')->middleware('Auth');

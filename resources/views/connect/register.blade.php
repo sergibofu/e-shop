@@ -6,7 +6,9 @@
 <div class="box shadow">
     <form action="{{url('/register')}}" method="post">
 
-        <!-- EMAIL FIELD -->
+        @csrf
+        
+        <!-- NAME FIELD -->
         <label for="name" class="label-login">Nombre:</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -31,16 +33,16 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-lock"></i></div>
             </div>
-            <input type="text" name="password" class="form-control">
+            <input type="password" name="password" class="form-control">
         </div>
 
         <!-- CONFIRM PASSWORD FIELD -->
-        <label for="confirmPassword" class="label-login">Confirmar password:</label>
+        <label for="cpassword" class="label-login">Confirmar password:</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-lock"></i></div>
             </div>
-            <input type="text" name="confirmPassword" class="form-control">
+            <input type="password" name="cpassword" class="form-control">
         </div>
 
         <!-- SUBMIT BUTTON -->
