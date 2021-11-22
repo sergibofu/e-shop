@@ -77,7 +77,7 @@ class ConnectController extends Controller
         $validated = $req->validate($rules, $messages);
 
         if(Auth::attempt(['email'=>$validated['email'], 'password' => $validated['password']],true)):
-            return redirect('/');
+            return redirect('/home');
         else: 
             return redirect('/login')->with('message','Error iniciando sesion')->with('alertType', 'danger');
         endif;

@@ -29,4 +29,4 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [ConnectController::class, 'postRegister'])->name('register');
 });
 
-Route::get('/logout', [ConnectController::class, 'getLogout'])->name('logout')->middleware('Auth');
+Route::get('/logout', [ConnectController::class, 'getLogout'])->name('logout')->middleware('auth');
