@@ -1,0 +1,9 @@
+/* Resets */
+body{
+    font-size: 14px;
+}
+
+h2, h3, h4, h5, ul, body, html{
+    margin: 0px;
+    padding: 0px;
+}

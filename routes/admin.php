@@ -7,11 +7,13 @@ middleware 'web'.
 
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+Use App\Http\Controllers\Admin\DashboardController;
 
+Route::middleware(['auth'])->group(function () {
+  Route::prefix('/admin')->group(function(){
+    Route::get('/', [DashboardController::class, 'getDashboard'])->middleware('isadmin');
+  });
 
-Route::get('/admin', function(){
-    return "Hi admin";
-})->middleware('isadmin');
-
-
+});
 

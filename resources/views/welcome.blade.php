@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="main">
-
+            <h1>Front page</h1>
     </body>
 </html>
