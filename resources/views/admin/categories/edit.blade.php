@@ -5,6 +5,9 @@
     <li class="breadcrumb-item">
         <a href="{{url('/admin/categories/0')}}"><i class="fas fa-folder-open"></i>Categorias</a>
     </li>
+    <li class="breadcrumb-item">
+        <a href="{{url('/admin/category/' . $category->id . '/edit')}}"><i class="fas fa-edit"></i>Editar Categoria</a>
+    </li>
 @endsection
 
 @section('content')
@@ -14,11 +17,11 @@
         <div class="col-md-3">
             <div class="panel shadow">
                 <div class="header">
-                    <h2><i class="fas fa-plus"></i>Agregar Categorías</h2>
+                    <h2><i class="fas fa-edit"></i>Editar Categorías</h2>
                 </div>{{-- end header --}}
 
                 <div class="inside">
-                    {!! Form::open(['url' => 'admin/category/add']) !!}
+                    {!! Form::open(['url' => 'admin/category/' . $category->id . '/edit']) !!}
 
                     <label for="name">Nombre: </label>
                     <div class="input-group">
@@ -27,7 +30,7 @@
                                 <i class="fas fa-keyboard"></i>
                             </div>
                         </div>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" value="{{$category->name}}">
                     </div>
 
                     <label for="module" class="mt-3">Módulo: </label>
@@ -54,7 +57,7 @@
                                 <i class="fas fa-keyboard"></i>
                             </div>
                         </div>
-                        <input type="text" id="icon" name="icon" class="form-control">
+                        <input type="text" id="icon" name="icon" value="{{$category->icon}}" class="form-control">
                     </div>
 
                     <input type="submit" value="save" class="btn btn-success mt-2">
@@ -66,46 +69,9 @@
             </div>
         </div>
 
+        {{-- COL 2 --}}
         <div class="col-md-9">
-            <div class="panel shadow">
-                <div class="header">
-                    <h2><i class="fas fa-folder-open"></i>Categorías</h2>
-                </div>{{-- end header --}}
-
-                <div class="inside">
-                    <nav class="nav">
-                        @foreach(getModulesArray() as $key => $module)
-                            <a href="{{url('/admin/categories/' . $key)}}" class="nav-link">{{$module}}</a>
-                        @endforeach
-                    </nav>
-                    
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td>Ícono</td>
-                                <td>Nombre</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($categories as $category)
-                                <tr>
-                                    <td>{!! htmlspecialchars_decode($category->icon) !!}</td>
-                                    <td>{{$category->name}}</td>
-                                                            <td>
-                            <div class="opts">
-                                <a href="{{url('/admin/category/' . $category->id . '/edit')}}"><i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="editar"></i></a>
-                                <a href="{{url('/admin/category/' . $category->id . '/delete')}}"><i class="fas fa-trash" data-toggle="tooltip" data-placement="top" title="eliminar"></i></a>
-                            </div>
-                        </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                   
-                </div>{{-- end inside --}}
-                
-            </div>
+            {{$category}}
         </div>
     </div>
 

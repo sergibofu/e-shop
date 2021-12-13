@@ -25,6 +25,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/product/add', [ProductController::class, 'addProduct'])->middleware('isadmin');
     Route::get('/categories/{module}', [CategoriesController::class, 'getCategories'])->middleware('isadmin');
 
+    Route::get('/category/{id}/edit', [CategoriesController::class, 'getCategoryEdit'])->middleware('isadmin');
+    Route::post('/category/{id}/edit', [CategoriesController::class, 'postCategoryEdit'])->middleware('isadmin');
+
+    Route::get('/category/{id}/delete', [CategoriesController::class, 'getCategoryDelete'])->middleware('isadmin');
 
     Route::post('/category/add', [CategoriesController::class, 'postCategoryAdd'])->middleware('isadmin');
 

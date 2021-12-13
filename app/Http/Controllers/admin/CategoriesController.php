@@ -59,4 +59,66 @@ class CategoriesController extends Controller
 
 
     }
+
+    public function getCategoryEdit($id){
+
+        $category = Category::find($id);
+        $data = [
+            'category' => $category
+        ];
+
+        return view('admin.categories.edit', $data);
+    }
+
+    public function postCategoryEdit(Request $req, $id){
+         //nuestras normas de validacion y mensajes de respuesta
+         $rules = [
+            'name'      =>       'required',
+            'module'     =>       'required',
+            'icon' => 'required'
+        ];
+    
+        $messages = [
+            "name.required" => "El nombre es requerido",
+            "module.required" => "El modulo es requerido",
+            "icon.required" => "El icono es requerido"
+        ];
+
+        //validamos nuestra peticion
+        $validator = Validator::make($req->all(), $rules, $messages);
+
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message', 'Se ha producido un error')
+                   ->with('typealert', 'danger');
+        else:
+            $category = Category::find($id);
+            $category->module = $req->input('module');
+            $category->name = $req->input('name');
+            $category->icon = $req->input('icon');
+            //$category->slug = Str::slug($req->input('name'));
+
+            //guardamos nuestra categoria
+            if($category->save()):
+                return back()->with('message', 'Categoría guardada correctamente')
+                ->with('typealert', 'success');
+            else:
+                return back()->with('message', 'Se ha producido un error')
+                ->with('typealert', 'danger');
+            endif;
+
+        endif;
+
+
+
+
+        return $id;
+    }
+
+    public function getCategoryDelete($id){
+        $category = Category::find($id);
+
+        if($category->delete()):
+            return back()->with('message', 'Guardado con exito')->with('typealert', 'success');
+        endif;
+    }
 }

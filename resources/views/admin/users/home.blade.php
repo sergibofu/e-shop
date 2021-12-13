@@ -32,7 +32,6 @@
                             <div class="opts">
                                 <a href="{{url('/admin/user/' . $user->id . '/edit')}}"><i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="editar"></i></a>
                                 <a href="{{url('/admin/user/' . $user->id . '/delete')}}"><i class="fas fa-trash" data-toggle="tooltip" data-placement="top" title="eliminar"></i></a>
-
                             </div>
                         </td>
                     </tr>
