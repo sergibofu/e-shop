@@ -46,6 +46,10 @@
             <li>
                 <a href="{{url('/admin/products')}}"><i class="fas fa-boxes"></i>Productos</a>
             </li>
+
+            <li>
+                <a href="{{url('/admin/categories/0')}}"><i class="fas fa-folder-open"></i>Categorías</a>
+            </li>
         </ul>
     </div>
 

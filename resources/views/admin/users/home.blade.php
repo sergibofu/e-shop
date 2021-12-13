@@ -1,5 +1,5 @@
-@extends('admin.master');
-@section('title', 'usuarios');
+@extends('admin.master')
+@section('title', 'Usuarios')
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
